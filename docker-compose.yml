@@ -1,0 +1,17 @@
+services:
+  ros2_dev:
+    image: ros2-humble:develop
+    container_name: ros2-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./ros2_ws:/home/nav/ros2_ws
+    # ports:
+      # - "8080:8080"
+    network_mode: "host"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/bash
